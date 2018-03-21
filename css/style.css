@@ -1,0 +1,223 @@
+/*neke općenite stvari*/
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-size: calc(0.50em + 1vmin);
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+}
+a{
+    text-decoration: none;
+    color: #1e1e1e;
+    -webkit-font-smoothing: antialiased;
+}
+/*grid*/
+.grid{
+    background: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+        "content1 ."
+        "content2 ."
+        "content3 ."
+        "content4 ."
+        "footer footer";
+    }
+/*navigacija*/
+.nav_wrap{
+    position: fixed;
+    top: 0;
+    padding: 3em;
+    padding-bottom: 2em;
+    z-index: 1;
+    background: white;
+    width: 40vw;
+    }
+.nav{
+    display: grid;
+    align-content: center;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+        "title . links";
+    }
+    .nav a{
+        color: #787878;
+    }
+.title a{
+    grid-area: title;
+    letter-spacing: 1vw;
+    color: #ffffff;
+    background: #5c5c5c;
+    padding: 15px;
+    padding-left: 30px;
+}
+.links{
+    grid-area: links;
+}
+.links a{
+    margin-left: 1em;
+    
+}
+.title, .links{
+    text-transform: uppercase;
+    font-size: 2vh;
+}
+.content{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas:
+        "text text . .";
+    align-content:center;
+    background: white;
+    min-height: 100vh;
+    padding-left: 3em;
+}
+/*grid areas*/
+.content1{
+    grid-area: content1;
+}
+.content2{
+    grid-area: content2;
+}
+.content3{
+    grid-area: content3;
+}
+.content4{
+    grid-area: content4;
+}
+
+/*lijeva strana sadržaj*/
+.main_text{
+    grid-area: text;
+    transform-style: preserve-3d;
+    transform: perspective(10px);
+    transition: all 0.8s ease;
+    z-index: 5;
+}
+.main_text h1{
+    font-size: 5vh;
+    text-transform: uppercase;
+    color: #f37e7e;
+}
+.main_text p{
+    margin-top: 1em;
+    font-size: 3.5vh;
+    color: #787878;
+}
+button{
+    margin-top: 2em;
+    padding: 2vh;
+    background: transparent;
+    letter-spacing: 0.3vh;
+    border: 2px solid #a8a8a8;
+}
+
+/*desna strana*/
+.hero{
+    /*trebo je biti hero image, postalo je nešta drugo*/
+    display: grid;
+    min-height: 100vh;
+    width: 50vw;
+    right: 0;
+    background: linear-gradient(270deg, #000000, #292929);
+    background-size: 500% 500%;
+    position: fixed;
+    z-index: 1;
+}
+/*slike kamenja*/
+    .img_wrap{
+        grid-area: img;
+    }
+    img{
+        width: 20vw;
+        height: auto;
+    }
+/*footer*/
+.footer{
+    grid-area: footer;
+    text-align: center;
+    z-index: 20;
+    background: white;
+    padding: 1em;   
+    font-size: 1vw;
+    color: #787878;
+}
+.hidden{
+    display: none;
+}
+/*ovaj se prikaže samo na manjim zaslonima*/
+.image_div{
+    height: 100vh;
+    width: 100vw;
+    display: none;
+}
+
+.img1{
+    grid-area: img1;
+    background: url(../img/kamen1/1.jpg);
+}
+.img2{
+    grid-area: img2;
+    background: url(../img/kamen1/2.jpg);
+}
+.img3{
+    grid-area: img3;
+    background: url(../img/kamen1/3.jpg);
+}
+.img4{
+    grid-area: img4;
+    background: url(../img/kamen1/4.jpg);
+}
+.img1, .img2, .img3, .img4{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+@media only screen and (max-width: 1080px) {
+    /* mobilni prikaz u inspect-u izgleda u redu, no kad se stranica otvori u mobilnom browseru ne izgleda dobro. Pretpostavljam da je problem sa css gridom*/
+    .content {
+        min-width: 100vw;
+    }
+    .hero{
+        display: none;
+    }
+    img{
+        display: none;
+    }
+    .nav_wrap{
+        z-index: 11;
+        width: 100%;
+        
+    }
+    .nav{
+       grid-template-columns: 1fr;
+    }
+    .links{
+        display: none;
+    }
+    .title{
+    }
+    .image_div{
+        display: block;
+        width: 100%;
+        margin-bottom: 5em;
+    }
+    .grid{
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+        "content1"
+        "img1"
+        "content2"
+        "img2"
+        "content3"
+        "img3"
+        "content4"
+        "img4"
+        "footer";
+    }
+    }
+}
+}
